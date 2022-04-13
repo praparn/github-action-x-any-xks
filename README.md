@@ -65,7 +65,7 @@ Before start to create AKS cluster. Please input credential for operate on Azure
   ```sh
   "Resource Group Name"
   ```
-* {AZURE_STORAGEACCOUNT}: Input your storage account name for keep terraform state on portal.
+* {AZURE_STORAGEACCOUNT}: Input your storage account name for keep terraform state on portal. Remark: Storage account name must be between 3 and 24 characters in length and use numbers and lower-case letters only
   ```sh
   "Storage Account Name"
   ```
