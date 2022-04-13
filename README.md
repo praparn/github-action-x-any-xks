@@ -88,12 +88,20 @@ Before start to create AKS cluster. Please input credential for operate on Azure
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+<!-- LICENSE -->
+## License
+
+Distributed under the Apacher License. See `LICENSE.txt` for more information.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+Praparn Lueangphoonlap - [@facebook](https://www.facebook.com/praparn.lungpoonlap) - praparn@gmail.com
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/praparn/github-action-x-any-xks](https://github.com/praparn/github-action-x-any-xks)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
