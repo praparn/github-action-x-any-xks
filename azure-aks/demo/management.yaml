@@ -1,0 +1,59 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: management-ui 
+  labels:
+    role: management-ui 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: management-ui
+  namespace: management-ui 
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80 
+    targetPort: 9001
+  selector:
+    role: management-ui
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: management-ui-ingress
+  namespace: management-ui 
+  annotations:
+    kubernetes.io/ingress.class: azure/application-gateway
+spec:
+#  ingressClassName: azure/application-gateway
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: management-ui
+            port:
+              number: 80
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: management-ui 
+  namespace: management-ui 
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        role: management-ui
+        name: "management-ui"
+    spec:
+      containers:
+      - name: management-ui 
+        image: labdocker/star-collect:v0.1.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9001
