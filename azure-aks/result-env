@@ -1,8 +1,0 @@
-client_certificate = <sensitive>
-client_key = <sensitive>
-cluster_ca_certificate = <sensitive>
-cluster_password = <sensitive>
-cluster_username = <sensitive>
-host = <sensitive>
-kube_config = <sensitive>
-resource_group_name = <sensitive>

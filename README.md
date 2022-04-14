@@ -44,6 +44,8 @@
 
 Cloud provider's folder: aws-eks
 
+*Remark: For use this github action on Azure Portal. Please enable the preview feature 'microsoft.ContainerService/CustomNodeConfigPreview' by follow this KB [Azure Enable Feature](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/preview-features?tabs=azure-portal)
+
 ### Prerequisites
 
 Before start to create AKS cluster. Please input credential for operate on Azure Portal on github's "secrets" as detail below:
@@ -70,15 +72,17 @@ Before start to create AKS cluster. Please input credential for operate on Azure
   "Storage Account Name"
   ```
 
-### Installation
+### Deployment Step
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/praparn/github-action-x-any-xks.git
    ```
-3. Install NPM packages
+2. Setup "secrets" elements as explain in Prerequisites
+3. Create Azure environment by commit and tag "aks-init-env*"
    ```sh
+   git commit -m "AKS initial environment on Portal
+   ```
    npm install
    ```
 4. Enter your API in `config.js`

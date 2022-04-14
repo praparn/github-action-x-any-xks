@@ -28,14 +28,13 @@ jobs:
         azcliversion: 2.34.1
         inlineScript: |
           #!/bin/bash
-            touch ./aws-eks/result-env-destroy
-            echo "##### Start Destroy Azure Element #####" > ./aws-eks/result-env-destroy
+            echo "##### Start Destroy Azure Element #####" > ./aws-eks/result/result-env-destroy
             echo "##### Destroy Azure Storage Container ####
-            az storage container delete --name tfstate --account-name ${{ secrets.AZURE_STORAGEACCOUNT }} >> ./aws-eks/result-env-destroy
+            az storage container delete --name tfstate --account-name ${{ secrets.AZURE_STORAGEACCOUNT }} >> ./aws-eks/result/result-env-destroy
             echo "##### Destroy Azure Storage Account #####"
-            az storage account delete --name ${{ secrets.AZURE_STORAGEACCOUNT }} >> ./aws-eks/result-env-destroy
+            az storage account delete --name ${{ secrets.AZURE_STORAGEACCOUNT }} >> ./aws-eks/result/result-env-destroy
             echo "##### Destroy Azure Resource Group #####"
-            az group delete --name ${{ secrets.AZURE_RESOURCEGROUP }} --yes -y >> ./aws-eks/result-env-destroy
+            az group delete --name ${{ secrets.AZURE_RESOURCEGROUP }} --yes -y >> ./aws-eks/result/result-env-destroy
 
    # Run Azure CLI
     - uses: azure/CLI@v1
