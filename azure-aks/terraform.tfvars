@@ -1,16 +1,16 @@
 #------------------------------------Critical Vault properties
-resource_group = "###resource_group###"
+resource_group = "AKS-Farm1"
 
-storage_accname = "###storage_accname###"
+storage_accname = "aksfarm1stgacc"
 
-cluster_name = "###cluster_name###"
+cluster_name = "aks-farm1"
 
 #------------------------------------Basic System properties------------------------------------
 region = "eastasia"
 
 location = "East Asia"
 
-log_analytics_workspace_name = "###cluster_name###-wrkspc"
+log_analytics_workspace_name = "aks-farm1-wrkspc"
 
 #--------------------------------------Basic AKS properties-------------------------------------
 environment = "Development" #Environment Development, UAT, Production
