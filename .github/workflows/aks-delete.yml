@@ -6,8 +6,6 @@ on:
       - main
       - 'customer/**'
       - 'dev/**'
-    branches-ignore:    
-      - 'rd/**'
     tags:
       - 'aks-delete-cluster*'
   pull_request:
@@ -15,8 +13,6 @@ on:
       - main
       - 'customer/**'
       - 'dev/**'
-    branches-ignore:    
-      - 'rd/**'
     tags:
       - 'aks-delete-cluster*'
  
