@@ -81,6 +81,8 @@ Before start to create AKS cluster. Please input credential for operate on Azure
 2. Setup "secrets" elements as explain in Prerequisites
 3. Create Azure environment by commit and tag "aks-init-env*"
    ```sh
+   git pull
+   git tag #check tag duplicate
    echo "aks-init-env-yyyymmddhhmmss" > ./azure-aks/result/result-env-init
    git add -A
    git commit -m "Any commend that you need"
