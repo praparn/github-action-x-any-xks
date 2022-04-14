@@ -1,4 +1,4 @@
-name: 'AKS initial basic element on Azure Portal'
+name: 'AKS destroy basic element on Azure Portal'
 on:
   push:
     tags:
