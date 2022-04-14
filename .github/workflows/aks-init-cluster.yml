@@ -28,10 +28,10 @@ jobs:
         # Sed to setup environment
         sed -i -e "s/###resource_group###/${{ secrets.AZURE_RESOURCEGROUP }}/g" ./terraform.tfvars
         sed -i -e "s/###storage_accname###/${{ secrets.AZURE_STORAGEACCOUNT }}/g" ./terraform.tfvars
-        sed -i -e "s/###cluster_name###/${{ secrets.{AZURE_CLUSTERNAME} }}/g" ./terraform.tfvars
+        sed -i -e "s/###cluster_name###/${{ secrets.AZURE_CLUSTERNAME }}/g" ./terraform.tfvars
         sed -i -e "s/###resource_group###/${{ secrets.AZURE_RESOURCEGROUP }}/g" ./00_provider.tf
         sed -i -e "s/###storage_accname###/${{ secrets.AZURE_STORAGEACCOUNT }}/g" ./00_provider.tf
-        sed -i -e "s/###cluster_name###/${{ secrets.{AZURE_CLUSTERNAME} }}/g" ./00_provider.tf
+        sed -i -e "s/###cluster_name###/${{ secrets.AZURE_CLUSTERNAME }}/g" ./00_provider.tf
 
     - uses: actions-js/push@master
       name: Commit and push result back
