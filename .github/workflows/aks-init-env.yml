@@ -38,7 +38,7 @@ jobs:
           #!/bin/bash
             echo "##### Create Azure Resource Group #####" > ./result-init
             echo "##### Create Azure Resource Group #####"
-            if $(az group exists --resource-group ${{ env.RESOURCE_GROUP_NAME }}) ; then
+            if $(az group exists -n ${{ env.AZURE_RESOURCEGROUP }}) ; then
               echo "Azure resource group already exists, skipping creation..."
             else
               az group create --name ${{ secrets.AZURE_RESOURCEGROUP }} --location ${{ secrets.AZURE_REGION }} >> ./result-init
@@ -48,6 +48,7 @@ jobs:
             az storage account create --name ${{ secrets.AZURE_STORAGEACCOUNT }} --resource-group ${{ secrets.AZURE_RESOURCEGROUP}} --location ${{ secrets.AZURE_REGION }} --sku Standard_RAGRS --kind StorageV2 >> ./result-init
             echo "##### Create Azure Storage Container #####"
             az storage container create --name tfstate --account-name ${{ secrets.AZURE_STORAGEACCOUNT }}  --fail-on-exist >> ./result-init
+            
             echo "##### Create Azure Storage Account #####"
 
    # Run Azure CLI
