@@ -26,7 +26,7 @@
 
 * All credential in this project was designed to store on "secrets" on github. If you new with this. Please kindly following [GitHub Secrets](https://github.com/Azure/actions-workflow-samples/blob/master/assets/create-secrets-for-GitHub-workflows.md)
 * As project are coverage multiple cloud provider. So when you fork/clone this repository in action. You can consider to remove unused cloud provider's folder
-* In case to create multiple cluster with same cloud provider. Just duplicate the cloud provider's folder and modifed workflow of your cloud provider to fit with your cluster properties
+* In case to create multiple cluster with same cloud provider. We can duplicate the cloud provider's folder to fit with your cluster properties or create branch for handle this (customer/XX, dev/XX)
 
 
 ### Built With
