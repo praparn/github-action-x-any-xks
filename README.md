@@ -120,28 +120,52 @@ Before start to create AKS cluster. Please input credential for operate on Azure
    ```sh
       git pull
    git tag #check tag duplicate
-   echo "aks-cluster-env-yyyymmddhhmmss" > ./azure-aks/result/result-aks-init
+   echo "aks-cluster-create-yyyymmddhhmmss" > ./azure-aks/result/result-aks-init
    git add -A
    git commit -m "Any commend that you need"
-   git tag aks-cluster-env-yyyymmddhhmmss -m "aks-cluster-env-yyyymmddhhmmss"
-   git push --atomic origin <branch name> aks-cluster-env-yyyymmddhhmmss
+   git tag aks-cluster-create-yyyymmddhhmmss -m "aks-cluster-create-yyyymmddhhmmss"
+   git push --atomic origin <branch name> aks-cluster-create-yyyymmddhhmmss
    ```
-6. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+6. Check progress on tab "action" until it finished. (Optional: Verify result on web console/cli for double check)
+
+7. Download kubeconfig from file "aks-config"
+
+
+### Modified Kubernetes Configuation
+
+1. Edit properties of Kubernetes cluster on file "./azure-aks/terraform.tfvars"
+   *Remark: 
+    - Please check detail for each properties that can configure on file variable.tf
+    - Prohibited value start with ###   XXX   ### will be reserve for system
+    - Basic configure is avaliable on "#----------Basic System properties" and "#----------Basic AKS properties
+    - Advance configure is avaliable on "#----------Advance AKS properties"
+2. Apply the change on cluster by commit and tag "aks-cluster-modify*"
+   ```sh
+   git pull
+   git tag #check tag duplicate
+   echo "aks-cluster-modify-yyyymmddhhmmss" > ./azure-aks/result/result-env-init
+   git add -A
+   git commit -m "Any commend that you need"
+   git tag aks-cluster-modify-yyyymmddhhmmss -m "aks-cluster-modify*-yyyymmddhhmmss"
+   git push --atomic origin <branch name> aks-cluster-modify-yyyymmddhhmmss
    ```
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
+3. Check progress on tab "action" until it finished. (Optional: Verify result on web console/cli for double check)
+4. Download kubeconfig from file "aks-config"
 
 ### Destroy Step-by-Step
 
-1. Clone the repo
+1. Delete the cluster by commit and tag "aks-cluster-destroy*"
    ```sh
-   git clone https://github.com/praparn/github-action-x-any-xks.git
+   git pull
+   git tag #check tag duplicate
+   echo "aks-cluster-destroy-yyyymmddhhmmss" > ./azure-aks/result/result-env-init
+   git add -A
+   git commit -m "Any commend that you need"
+   git tag aks-cluster-destroy-yyyymmddhhmmss -m "aks-cluster-destroy*-yyyymmddhhmmss"
+   git push --atomic origin <branch name> aks-cluster-destroy-yyyymmddhhmmss
    ```
-2. Setup "secrets" elements as explain in Prerequisites
-3. Create Azure environment by commit and tag "aks-init-env*"
+2. Check progress on tab "action" until it finished. (Optional: Verify result on web console/cli for double check)
+3. Destroy Azure environment by commit and tag "aks-init-destroy*"
    ```sh
    echo "aks-destroy-env-yyyymmddhhmmss" > ./azure-aks/result/result-env-destroy
    git add -A

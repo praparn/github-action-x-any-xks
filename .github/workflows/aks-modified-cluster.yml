@@ -1,14 +1,14 @@
-name: 'AKS initial cluster'
+name: 'AKS modified cluster'
 on:
   push:
     tags:
-      - 'aks-cluster-create*'
+      - 'aks-cluster-modify*'
   pull_request:
     tags:
-      - 'aks-cluster-create*'
+      - 'aks-cluster-modify*'
 
 jobs:
-  create-cluster:
+  modify-cluster:
     runs-on: ubuntu-latest
     env:
         working-directory: ./azure-aks/
@@ -24,17 +24,6 @@ jobs:
       # Checkout code
     - uses: actions/checkout@master
       name: Git checkout code
-
-      # Seed file for system configuration
-    - name: Setup system configruation
-      run: | 
-        # Sed to setup environment
-        sed -i -e "s/###resource_group###/${{ secrets.AZURE_RESOURCEGROUP }}/g" ./terraform.tfvars
-        sed -i -e "s/###storage_accname###/${{ secrets.AZURE_STORAGEACCOUNT }}/g" ./terraform.tfvars
-        sed -i -e "s/###cluster_name###/${{ secrets.AZURE_CLUSTERNAME }}/g" ./terraform.tfvars
-        sed -i -e "s/###resource_group###/${{ secrets.AZURE_RESOURCEGROUP }}/g" ./00_provider.tf
-        sed -i -e "s/###storage_accname###/${{ secrets.AZURE_STORAGEACCOUNT }}/g" ./00_provider.tf
-        sed -i -e "s/###cluster_name###/${{ secrets.AZURE_CLUSTERNAME }}/g" ./00_provider.tf
 
     - name: AKS readiness verify
       uses: hashicorp/setup-terraform@v1
@@ -84,6 +73,7 @@ jobs:
 
     - name: Export configuration (KUBECONFIG)
       run: | 
+        # Extrace kubeconfig from state file
         tail -n +2 "aks-config" > "aks-config.tmp" && mv "aks-config.tmp" "aks-config"
         sed '$d' aks-config > "aks-config.tmp" && mv "aks-config.tmp" "aks-config" && rm "aks-config.tmp"
 
