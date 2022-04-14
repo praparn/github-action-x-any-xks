@@ -36,6 +36,7 @@ jobs:
             az storage account delete --name ${{ secrets.AZURE_STORAGEACCOUNT }} >> ./azure-aks/result/result-env-destroy
             echo "##### Destroy Azure Resource Group #####"
             az group delete --name ${{ secrets.AZURE_RESOURCEGROUP }} --yes -y >> ./azure-aks/result/result-env-destroy
+            echo "##### Finished Destroy Azure Element #####" >> ./azure-aks/result/result-env-destroy
 
    # Run Azure CLI
     - uses: azure/CLI@v1

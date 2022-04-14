@@ -41,7 +41,7 @@ jobs:
             az storage account create --name ${{ secrets.AZURE_STORAGEACCOUNT }} --resource-group ${{ secrets.AZURE_RESOURCEGROUP}} --location ${{ secrets.AZURE_REGION }} --sku Standard_RAGRS --kind StorageV2 >> ./azure-aks/result/result-env-init
             echo "##### Create Azure Storage Container #####"
             az storage container create --name tfstate --account-name ${{ secrets.AZURE_STORAGEACCOUNT }}  --fail-on-exist >> ./azure-aks/result/result-env-init
-            echo "##### Finished Create Azure Element #####" > ./azure-aks/result/result-env-init
+            echo "##### Finished Create Azure Element #####" >> ./azure-aks/result/result-env-init
 
    # Run Azure CLI
     - uses: azure/CLI@v1
