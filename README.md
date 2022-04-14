@@ -59,6 +59,22 @@ Before start to create AKS cluster. Please input credential for operate on Azure
     (...)
   }
   ```
+* {AZURE_CLIENT_ID}: Input client id (You can check this from "{AZURE_CREDENTIALS}")
+  ```sh
+  "Azure Client ID"
+  ```
+* {AZURE_CLIENT_SECRET}: Input client secret id (You can check this from "{AZURE_CREDENTIALS}")
+  ```sh
+  "Azure Client Secret"
+  ```
+* {AZURE_SUBSCRIPTION_ID}: Input subscription id (You can check this from "{AZURE_CREDENTIALS}")
+  ```sh
+  "Azure Subscription ID"
+  ```
+* {AZURE_TENANT_ID}: Input tanant id (You can check this from "{AZURE_CREDENTIALS}")
+  ```sh
+  "Azure Tanent ID"
+  ```
 * {AZURE_REGION}: Input your region on portal. Ex:"eastasia" [Region code](https://azuretracks.com/2021/04/current-azure-region-names-reference/)
   ```sh
   "Region Name"
@@ -70,6 +86,10 @@ Before start to create AKS cluster. Please input credential for operate on Azure
 * {AZURE_STORAGEACCOUNT}: Input your storage account name for keep terraform state on portal. Remark: Storage account name must be between 3 and 24 characters in length and use numbers and lower-case letters only
   ```sh
   "Storage Account Name"
+  ```
+* {AZURE_CLUSTERNAME}: Input your AKS cluster name
+  ```sh
+  "AKS Cluster Name"
   ```
 
 ### Deployment Step-by-Step
@@ -89,8 +109,24 @@ Before start to create AKS cluster. Please input credential for operate on Azure
    git tag aks-init-env-yyyymmddhhmmss -m "aks-init-env-yyyymmddhhmmss"
    git push --atomic origin <branch name> aks-init-env-yyyymmddhhmmss
    ```
-5. Check progress on tab "action"
-4. Enter your API in `config.js`
+5. Check progress on tab "action" until it finished. (Optional: Verify result on web console/cli for double check)
+6. Edit properties of Kubernetes cluster on file "./azure-aks/terraform.tfvars"
+   *Remark: 
+    - Please check detail for each properties that can configure on file variable.tf
+    - Prohibited value start with ###   XXX   ### will be reserve for system
+    - Basic configure is avaliable on "#----------Basic System properties" and "#----------Basic AKS properties
+    - Advance configure is avaliable on "#----------Advance AKS properties"
+7. Create AKS cluster by commit and tag "aks-init-cluster*"
+   ```sh
+      git pull
+   git tag #check tag duplicate
+   echo "aks-cluster-env-yyyymmddhhmmss" > ./azure-aks/result/result-aks-init
+   git add -A
+   git commit -m "Any commend that you need"
+   git tag aks-cluster-env-yyyymmddhhmmss -m "aks-cluster-env-yyyymmddhhmmss"
+   git push --atomic origin <branch name> aks-cluster-env-yyyymmddhhmmss
+   ```
+6. Enter your API in `config.js`
    ```js
    const API_KEY = 'ENTER YOUR API';
    ```

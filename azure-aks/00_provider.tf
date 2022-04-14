@@ -1,10 +1,10 @@
 # Azure Provider source and version being used
 terraform {
   backend "azurerm" {
-    resource_group_name  = "aks2022-farm1-rg"
-    storage_account_name = "aks2022farm1stgacc"
+    resource_group_name  = "###resource_group###"
+    storage_account_name = "###storage_accname###"
     container_name       = "tfstate"
-    key                  = "aks2022-farm1.tfstate"
+    key                  = "###cluster_name###.tfstate"
   }
   required_providers {
     azurerm = {

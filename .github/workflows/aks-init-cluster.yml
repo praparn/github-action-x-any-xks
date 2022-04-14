@@ -1,0 +1,40 @@
+name: 'AKS initial cluster'
+on:
+  push:
+    tags:
+      - 'aks-cluster-env*'
+  pull_request:
+    tags:
+      - 'aks-cluster-env*'
+
+jobs:
+  create-environment:
+    runs-on: ubuntu-latest
+    env:
+        working-directory: ./azure-aks/
+        ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+        ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+        ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+    steps:
+      # Checkout code
+    - uses: actions/checkout@master
+      name: Git checkout code
+
+      # Seed file for system configuration
+    - name: Setup system configruation
+      working-directory: ${{env.working-directory}}
+      run: | 
+        # Sed to setup environment
+        sed -i -e "s/###resource_group###/${{ secrets.AZURE_RESOURCEGROUP }}/g" ./terraform.tfvars
+        sed -i -e "s/###storage_accname###/${{ secrets.AZURE_STORAGEACCOUNT }}/g" ./terraform.tfvars
+        sed -i -e "s/###cluster_name###/${{ secrets.{AZURE_CLUSTERNAME} }}/g" ./terraform.tfvars
+        sed -i -e "s/###resource_group###/${{ secrets.AZURE_RESOURCEGROUP }}/g" ./00_provider.tf
+        sed -i -e "s/###storage_accname###/${{ secrets.AZURE_STORAGEACCOUNT }}/g" ./00_provider.tf
+        sed -i -e "s/###cluster_name###/${{ secrets.{AZURE_CLUSTERNAME} }}/g" ./00_provider.tf
+
+    - uses: actions-js/push@master
+      name: Commit and push result back
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        message: "Commit for update result create environment"
