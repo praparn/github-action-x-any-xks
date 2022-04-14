@@ -1,17 +1,9 @@
 name: 'AKS initial basic element on Azure Portal'
 on:
   push:
-    branches:
-      - main
-      - 'customer/**'
-      - 'dev/**'
     tags:
       - 'aks-init-env*'
   pull_request:
-    branches:
-      - main
-      - 'customer/**'
-      - 'dev/**'
     tags:
       - 'aks-init-env*'
 
@@ -38,7 +30,7 @@ jobs:
           #!/bin/bash
             echo "##### Create Azure Resource Group #####" > ./result-init
             echo "##### Create Azure Resource Group #####"
-            if $(az group exists -n ${{ env.AZURE_RESOURCEGROUP }}) ; then
+            if $(az group exists -n ${{ secrets.AZURE_RESOURCEGROUP }}) ; then
               echo "Azure resource group already exists, skipping creation..."
             else
               az group create --name ${{ secrets.AZURE_RESOURCEGROUP }} --location ${{ secrets.AZURE_REGION }} >> ./result-init
