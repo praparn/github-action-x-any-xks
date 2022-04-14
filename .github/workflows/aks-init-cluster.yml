@@ -2,10 +2,10 @@ name: 'AKS initial cluster'
 on:
   push:
     tags:
-      - 'aks-cluster-env*'
+      - 'aks-cluster-create*'
   pull_request:
     tags:
-      - 'aks-cluster-env*'
+      - 'aks-cluster-create*'
 
 jobs:
   create-environment:
