@@ -28,6 +28,7 @@ jobs:
         azcliversion: 2.34.1
         inlineScript: |
           #!/bin/bash
+            touch ./aws-eks/result-env-destroy
             echo "##### Start Destroy Azure Element #####" > ./aws-eks/result-env-destroy
             echo "##### Destroy Azure Storage Container ####
             az storage container delete --name tfstate --account-name ${{ secrets.AZURE_STORAGEACCOUNT }} >> ./aws-eks/result-env-destroy

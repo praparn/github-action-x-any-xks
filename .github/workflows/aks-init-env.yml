@@ -28,6 +28,7 @@ jobs:
         azcliversion: 2.34.1
         inlineScript: |
           #!/bin/bash
+            touch ./aws-eks/result-env-init
             echo "##### Start Create Azure Element #####" > ./aws-eks/result-env-init
             echo "##### Create Azure Resource Group #####"
             if $(az group exists -n ${{ secrets.AZURE_RESOURCEGROUP }}) ; then
