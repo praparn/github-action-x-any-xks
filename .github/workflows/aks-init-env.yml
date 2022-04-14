@@ -36,23 +36,30 @@ jobs:
         azcliversion: 2.34.1
         inlineScript: |
           #!/bin/bash
-            if $(az group exists --name ${{ env.RESOURCE_GROUP_NAME }}) ; then
+            echo "##### Create Azure Resource Group #####" > ./result-init
+            echo "##### Create Azure Resource Group #####"
+            if $(az group exists --resource-group ${{ env.RESOURCE_GROUP_NAME }}) ; then
               echo "Azure resource group already exists, skipping creation..."
             else
-              az group create --name ${{ secrets.AZURE_RESOURCEGROUP }} --location ${{ secrets.AZURE_REGION }}
+              az group create --name ${{ secrets.AZURE_RESOURCEGROUP }} --location ${{ secrets.AZURE_REGION }} >> ./result-init
               echo "Azure resource group created"
             fi
+            echo "##### Create Azure Storage Account #####"
+            az storage account create --name ${{ secrets.AZURE_STORAGEACCOUNT }} --resource-group ${{ secrets.AZURE_RESOURCEGROUP}} --location ${{ secrets.AZURE_REGION }} --sku Standard_RAGRS --kind StorageV2 >> ./result-init
+            echo "##### Create Azure Storage Container #####"
+            az storage container create --name tfstate --account-name ${{ secrets.AZURE_STORAGEACCOUNT }}  --fail-on-exist >> ./result-init
+            echo "##### Create Azure Storage Account #####"
 
-            az storage account create --name ${{ secrets.AZURE_STORAGEACCOUNT }} --resource-group ${{ secrets.AZURE_RESOURCEGROUP}} --location ${{ secrets.AZURE_REGION }} --sku Standard_RAGRS --kind StorageV2
-            az storage container create --name tfstate --account-name ${{ secrets.AZURE_STORAGEACCOUNT }}  --fail-on-exist
-        
-    - uses: azure/login@v1
-      name: Azure logout from protal
+   # Run Azure CLI
+    - uses: azure/CLI@v1
+      name: Run logout to portal
       with:
+        azcliversion: 2.34.1
         inlineScript: |
-          az logout
-          az cache purge
-          az account clear
+          #!/bin/bash
+            az logout
+            az cache purge
+            az account clear
 
     - uses: actions-js/push@master
       name: Commit and push result back
