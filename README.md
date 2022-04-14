@@ -85,7 +85,7 @@ Before start to create AKS cluster. Please input credential for operate on Azure
    git add -A
    git commit -m "Any commend that you need"
    git tag aks-init-env-yyyymmddhhmmss -m "aks-init-env-yyyymmddhhmmss"
-   git push 
+   git push
    ```
 5. Check progress on tab "action"
 4. Enter your API in `config.js`
