@@ -28,20 +28,19 @@ jobs:
         azcliversion: 2.34.1
         inlineScript: |
           #!/bin/bash
-            echo "##### Create Azure Resource Group #####" > ./result-init
+            echo "##### Start Create Azure Element #####" > ./aws-eks/result-env-init
             echo "##### Create Azure Resource Group #####"
             if $(az group exists -n ${{ secrets.AZURE_RESOURCEGROUP }}) ; then
               echo "Azure resource group already exists, skipping creation..."
             else
-              az group create --name ${{ secrets.AZURE_RESOURCEGROUP }} --location ${{ secrets.AZURE_REGION }} >> ./result-init
+              az group create --name ${{ secrets.AZURE_RESOURCEGROUP }} --location ${{ secrets.AZURE_REGION }} >> ./aws-eks/result-env-init
               echo "Azure resource group created"
             fi
             echo "##### Create Azure Storage Account #####"
-            az storage account create --name ${{ secrets.AZURE_STORAGEACCOUNT }} --resource-group ${{ secrets.AZURE_RESOURCEGROUP}} --location ${{ secrets.AZURE_REGION }} --sku Standard_RAGRS --kind StorageV2 >> ./result-init
+            az storage account create --name ${{ secrets.AZURE_STORAGEACCOUNT }} --resource-group ${{ secrets.AZURE_RESOURCEGROUP}} --location ${{ secrets.AZURE_REGION }} --sku Standard_RAGRS --kind StorageV2 >> ./aws-eks/result-env-init
             echo "##### Create Azure Storage Container #####"
-            az storage container create --name tfstate --account-name ${{ secrets.AZURE_STORAGEACCOUNT }}  --fail-on-exist >> ./result-init
-            
-            echo "##### Create Azure Storage Account #####"
+            az storage container create --name tfstate --account-name ${{ secrets.AZURE_STORAGEACCOUNT }}  --fail-on-exist >> ./aws-eks/result-env-init
+            echo "##### Finished Create Azure Element #####" > ./aws-eks/result-env-init
 
    # Run Azure CLI
     - uses: azure/CLI@v1

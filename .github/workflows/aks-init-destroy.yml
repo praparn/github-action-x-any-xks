@@ -1,0 +1,54 @@
+name: 'AKS initial basic element on Azure Portal'
+on:
+  push:
+    tags:
+      - 'aks-destroy-env*'
+  pull_request:
+    tags:
+      - 'aks-destroy-env*'
+
+jobs:
+  destroy-environment:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout code
+    - uses: actions/checkout@master
+      name: Git checkout code
+
+      # Log into Azure
+    - uses: azure/login@v1
+      name: Azure login to portal
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+      
+      # Run Azure CLI
+    - uses: azure/CLI@v1
+      name: Run script az cli for create elements
+      with:
+        azcliversion: 2.34.1
+        inlineScript: |
+          #!/bin/bash
+            echo "##### Start Destroy Azure Element #####" > ./aws-eks/result-env-destroy
+            echo "##### Destroy Azure Storage Container ####
+            az storage container delete --name tfstate --account-name ${{ secrets.AZURE_STORAGEACCOUNT }} >> ./aws-eks/result-env-destroy
+            echo "##### Destroy Azure Storage Account #####"
+            az storage account delete --name ${{ secrets.AZURE_STORAGEACCOUNT }} >> ./aws-eks/result-env-destroy
+            echo "##### Destroy Azure Resource Group #####"
+            az group delete --name ${{ secrets.AZURE_RESOURCEGROUP }} --yes -y >> ./aws-eks/result-env-destroy
+
+   # Run Azure CLI
+    - uses: azure/CLI@v1
+      name: Run logout to portal
+      with:
+        azcliversion: 2.34.1
+        inlineScript: |
+          #!/bin/bash
+            az logout
+            az cache purge
+            az account clear
+
+    - uses: actions-js/push@master
+      name: Commit and push result back
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        message: "Commit for update result create environment"
