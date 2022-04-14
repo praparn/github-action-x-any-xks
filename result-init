@@ -1,0 +1,112 @@
+##### Create Azure Resource Group #####
+{
+  "id": "/subscriptions/1b5667fe-df63-4acf-899e-551f3f93e8cf/resourceGroups/AKS-Farm1",
+  "location": "eastasia",
+  "managedBy": null,
+  "name": "AKS-Farm1",
+  "properties": {
+    "provisioningState": "Succeeded"
+  },
+  "tags": null,
+  "type": "Microsoft.Resources/resourceGroups"
+}
+{
+  "accessTier": "Hot",
+  "allowBlobPublicAccess": true,
+  "allowCrossTenantReplication": null,
+  "allowSharedKeyAccess": null,
+  "allowedCopyScope": null,
+  "azureFilesIdentityBasedAuthentication": null,
+  "blobRestoreStatus": null,
+  "creationTime": "2022-04-14T03:21:14.846069+00:00",
+  "customDomain": null,
+  "defaultToOAuthAuthentication": null,
+  "enableHttpsTrafficOnly": true,
+  "enableNfsV3": null,
+  "encryption": {
+    "encryptionIdentity": null,
+    "keySource": "Microsoft.Storage",
+    "keyVaultProperties": null,
+    "requireInfrastructureEncryption": null,
+    "services": {
+      "blob": {
+        "enabled": true,
+        "keyType": "Account",
+        "lastEnabledTime": "2022-04-14T03:21:14.908631+00:00"
+      },
+      "file": {
+        "enabled": true,
+        "keyType": "Account",
+        "lastEnabledTime": "2022-04-14T03:21:14.908631+00:00"
+      },
+      "queue": null,
+      "table": null
+    }
+  },
+  "extendedLocation": null,
+  "failoverInProgress": null,
+  "geoReplicationStats": null,
+  "id": "/subscriptions/1b5667fe-df63-4acf-899e-551f3f93e8cf/resourceGroups/AKS-Farm1/providers/Microsoft.Storage/storageAccounts/aksfarm1stgacc",
+  "identity": null,
+  "immutableStorageWithVersioning": null,
+  "isHnsEnabled": null,
+  "isLocalUserEnabled": null,
+  "isSftpEnabled": null,
+  "keyCreationTime": {
+    "key1": "2022-04-14T03:21:14.908631+00:00",
+    "key2": "2022-04-14T03:21:14.908631+00:00"
+  },
+  "keyPolicy": null,
+  "kind": "StorageV2",
+  "largeFileSharesState": null,
+  "lastGeoFailoverTime": null,
+  "location": "eastasia",
+  "minimumTlsVersion": "TLS1_0",
+  "name": "aksfarm1stgacc",
+  "networkRuleSet": {
+    "bypass": "AzureServices",
+    "defaultAction": "Allow",
+    "ipRules": [],
+    "resourceAccessRules": null,
+    "virtualNetworkRules": []
+  },
+  "primaryEndpoints": {
+    "blob": "https://aksfarm1stgacc.blob.core.windows.net/",
+    "dfs": "https://aksfarm1stgacc.dfs.core.windows.net/",
+    "file": "https://aksfarm1stgacc.file.core.windows.net/",
+    "internetEndpoints": null,
+    "microsoftEndpoints": null,
+    "queue": "https://aksfarm1stgacc.queue.core.windows.net/",
+    "table": "https://aksfarm1stgacc.table.core.windows.net/",
+    "web": "https://aksfarm1stgacc.z7.web.core.windows.net/"
+  },
+  "primaryLocation": "eastasia",
+  "privateEndpointConnections": [],
+  "provisioningState": "Succeeded",
+  "publicNetworkAccess": null,
+  "resourceGroup": "AKS-Farm1",
+  "routingPreference": null,
+  "sasPolicy": null,
+  "secondaryEndpoints": {
+    "blob": "https://aksfarm1stgacc-secondary.blob.core.windows.net/",
+    "dfs": "https://aksfarm1stgacc-secondary.dfs.core.windows.net/",
+    "file": null,
+    "internetEndpoints": null,
+    "microsoftEndpoints": null,
+    "queue": "https://aksfarm1stgacc-secondary.queue.core.windows.net/",
+    "table": "https://aksfarm1stgacc-secondary.table.core.windows.net/",
+    "web": "https://aksfarm1stgacc-secondary.z7.web.core.windows.net/"
+  },
+  "secondaryLocation": "southeastasia",
+  "sku": {
+    "name": "Standard_RAGRS",
+    "tier": "Standard"
+  },
+  "statusOfPrimary": "available",
+  "statusOfSecondary": "available",
+  "tags": {},
+  "type": "Microsoft.Storage/storageAccounts"
+}
+{
+  "created": true
+}
