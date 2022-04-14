@@ -180,7 +180,7 @@ Before start to create AKS cluster. Please input credential for operate on Azure
 
 ## AWS EKS Cluster
 
-Cloud provider's folder: azure-aks
+Cloud provider's folder: azure-aks 
 
 ### Prerequisites
 
