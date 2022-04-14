@@ -174,13 +174,16 @@ Before start to create AKS cluster. Please input credential for operate on Azure
    git push --atomic origin <branch name> aks-destroy-env-yyyymmddhhmmss
    ```
 5. Check progress on tab "action"
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+## AWS EKS Cluster
 
+Cloud provider's folder: azure-aks
+
+### Prerequisites
+
+Before start to create EKS cluster. Please input credential for operate on ACCESS_KEY and SECRET_KEY
 
 <!-- LICENSE -->
 ## License
