@@ -85,7 +85,7 @@ Before start to create AKS cluster. Please input credential for operate on Azure
    git add -A
    git commit -m "Any commend that you need"
    git tag aks-init-env-yyyymmddhhmmss -m "aks-init-env-yyyymmddhhmmss"
-   git push --atomic origin <branch name> <tag>
+   git push --atomic origin <branch name> aks-init-env-yyyymmddhhmmss
    ```
 5. Check progress on tab "action"
 4. Enter your API in `config.js`
@@ -109,7 +109,7 @@ Before start to create AKS cluster. Please input credential for operate on Azure
    git add -A
    git commit -m "Any commend that you need"
    git tag aks-destroy-env-yyyymmddhhmmss -m "aks-destroy-env-yyyymmddhhmmss"
-   git push --atomic origin <branch name> <tag>
+   git push --atomic origin <branch name> aks-destroy-env-yyyymmddhhmmss
    ```
 5. Check progress on tab "action"
 4. Enter your API in `config.js`
@@ -147,10 +147,12 @@ Project Link: [https://github.com/praparn/github-action-x-any-xks](https://githu
    git fetch origin
    git reset --hard origin/main
    ```
-2. Git reset tag
+2. Git reset tag (Delete all tags local/remote)
    ```sh
    git tag -l | xargs git tag -d
    git fetch --tags
+   git push origin --delete $(git tag -l) 
+   git tag -d $(git tag -l)
    ```
 <p align="right">(<a href="#top">back to top</a>)</p>
 
