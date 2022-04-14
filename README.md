@@ -85,7 +85,7 @@ Before start to create AKS cluster. Please input credential for operate on Azure
    git add -A
    git commit -m "Any commend that you need"
    git tag aks-init-env-yyyymmddhhmmss -m "aks-init-env-yyyymmddhhmmss"
-   git push
+   git push --atomic origin <branch name> <tag>
    ```
 5. Check progress on tab "action"
 4. Enter your API in `config.js`
@@ -94,6 +94,31 @@ Before start to create AKS cluster. Please input credential for operate on Azure
    ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+
+### Destroy Step-by-Step
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/praparn/github-action-x-any-xks.git
+   ```
+2. Setup "secrets" elements as explain in Prerequisites
+3. Create Azure environment by commit and tag "aks-init-env*"
+   ```sh
+   echo "aks-destroy-env-yyyymmddhhmmss" > ./azure-aks/result/result-env-destroy
+   git add -A
+   git commit -m "Any commend that you need"
+   git tag aks-destroy-env-yyyymmddhhmmss -m "aks-destroy-env-yyyymmddhhmmss"
+   git push --atomic origin <branch name> <tag>
+   ```
+5. Check progress on tab "action"
+4. Enter your API in `config.js`
+   ```js
+   const API_KEY = 'ENTER YOUR API';
+   ```
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 
 <!-- LICENSE -->
 ## License
@@ -114,13 +139,19 @@ Project Link: [https://github.com/praparn/github-action-x-any-xks](https://githu
 
 
 
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
+<!-- Utility Command -->
+## Utility Command
 
-* []()
-* []()
-* []()
-
+1. Git reset and pull everything from remote/main
+   ```sh
+   git fetch origin
+   git reset --hard origin/main
+   ```
+2. Git reset tag
+   ```sh
+   git tag -l | xargs git tag -d
+   git fetch --tags
+   ```
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
