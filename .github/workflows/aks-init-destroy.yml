@@ -23,7 +23,7 @@ jobs:
       
       # Run Azure CLI
     - uses: azure/CLI@v1
-      name: Run script az cli for create elements
+      name: Run script az cli for delete elements
       with:
         azcliversion: 2.34.1
         inlineScript: |

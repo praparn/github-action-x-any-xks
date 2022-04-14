@@ -1,4 +1,4 @@
-# Local .terraform directories
+# IGNORE repository
 **/.terraform/*
 
 # .tfstate files

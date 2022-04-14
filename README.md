@@ -72,7 +72,7 @@ Before start to create AKS cluster. Please input credential for operate on Azure
   "Storage Account Name"
   ```
 
-### Deployment Step
+### Deployment Step-by-Step
 
 1. Clone the repo
    ```sh
@@ -81,10 +81,12 @@ Before start to create AKS cluster. Please input credential for operate on Azure
 2. Setup "secrets" elements as explain in Prerequisites
 3. Create Azure environment by commit and tag "aks-init-env*"
    ```sh
-   git commit -m "AKS initial environment on Portal
+   echo "aks-init-env" > ./azure-aks/result/result-env-init
+   git commit -m "Any commend that you need"
+   git tag -a aks-init-env-xxxx -m "Any commend that you need"
+   git push
    ```
-   npm install
-   ```
+5. Check progress on tab "action"
 4. Enter your API in `config.js`
    ```js
    const API_KEY = 'ENTER YOUR API';
