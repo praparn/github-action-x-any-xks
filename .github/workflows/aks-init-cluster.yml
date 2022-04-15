@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     env:
       working-directory: ./azure-aks/
-      ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
-      ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
-      ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-      ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      TF_VAR_ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      TF_VAR_ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+      TF_VAR_ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      TF_VAR_ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
 
     defaults:
       run:
@@ -35,11 +35,7 @@ jobs:
         sed -i -e "s/###resource_group###/${{ secrets.AZURE_RESOURCEGROUP }}/g" ./00_provider.tf
         sed -i -e "s/###storage_accname###/${{ secrets.AZURE_STORAGEACCOUNT }}/g" ./00_provider.tf
         sed -i -e "s/###cluster_name###/${{ secrets.AZURE_CLUSTERNAME }}/g" ./00_provider.tf
-        export TF_VAR_ARM_CLIENT_ID=${{ secrets.AZURE_CLIENT_ID }}
-        export TF_VAR_ARM_CLIENT_SECRET=${{ secrets.AZURE_CLIENT_SECRET }}
-        export TF_VAR_ARM_SUBSCRIPTION_ID=${{ secrets.AZURE_SUBSCRIPTION_ID }}
-        export TF_VAR_ARM_TENANT_ID=${{ secrets.AZURE_TENANT_ID }}
-
+        
     - name: Load Terraform to operate
       uses: hashicorp/setup-terraform@v1
       with:
