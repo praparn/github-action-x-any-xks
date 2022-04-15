@@ -75,9 +75,12 @@ jobs:
 
     - name: Export configuration (KUBECONFIG)
       id: export
-      run: | 
-        tail -n +2 "aks-config" > "aks-config.tmp" && mv "aks-config.tmp" "aks-config"
-        sed '$d' aks-config > "aks-config.tmp" && mv "aks-config.tmp" "aks-config" && rm "aks-config.tmp"
+      run: |
+        awk 'NR>=2 && NR<=21' ./aks-config > ./aks-config.tmp
+        sed -i -e "s/<<EOT//g" ./aks-config.tmp
+        cat ./aks-config.tmp
+        tail -n +2 "./aks-config.tmp" > ./aks-config
+        rm ./aks-config.tmp
 
     - uses: actions-js/push@master
       name: Commit and push result back

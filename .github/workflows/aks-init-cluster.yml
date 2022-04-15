@@ -80,7 +80,6 @@ jobs:
         sed -i -e "s/<<EOT//g" ./aks-config.tmp
         cat ./aks-config.tmp
         tail -n +2 "./aks-config.tmp" > ./aks-config
-        cat ./aks-config | base64 > ./aks-config.base64
         rm ./aks-config.tmp
 
     - name: Install kubectl

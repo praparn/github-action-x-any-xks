@@ -114,9 +114,9 @@ Before start to create AKS cluster. Please input credential for operate on Azure
    git tag aks-cluster-create-yyyymmddhhmmss -m "aks-cluster-create-yyyymmddhhmmss"
    git push --atomic origin <branch name> aks-cluster-create-yyyymmddhhmmss
    ```
-6. Check progress on tab "action" until it finished. (Optional: Verify result on web console/cli for double check)<br><img src="img/aks2.png" alt="githubaction" width="800" height="300">
+6. Check progress on tab "action" until it finished. (Optional: Verify result on web console/cli for double check)<br><img src="img/aks2.png" alt="githubaction" width="800" height="400">
 
-7. Download kubeconfig from file "aks-config" and check application demo on browser <br><img src="img/aks3.png" alt="githubaction" width="800" height="300">
+7. Download kubeconfig from file "aks-config" and check application demo on browser <br><img src="img/aks3.png" alt="githubaction" width="800" height="600">
 
 ### Modified Kubernetes Configuation
 
@@ -136,7 +136,7 @@ Before start to create AKS cluster. Please input credential for operate on Azure
    git tag aks-cluster-modify-yyyymmddhhmmss -m "aks-cluster-modify*-yyyymmddhhmmss"
    git push --atomic origin <branch name> aks-cluster-modify-yyyymmddhhmmss
    ```
-3. Check progress on tab "action" until it finished. (Optional: Verify result on web console/cli for double check)<br><img src="img/aks4.png" alt="githubaction" width="800" height="300">
+3. Check progress on tab "action" until it finished. (Optional: Verify result on web console/cli for double check)<br><img src="img/aks4.png" alt="githubaction" width="800" height="600">
 4. Download kubeconfig from file "aks-config"
 
 ### Destroy Step-by-Step
