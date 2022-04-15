@@ -79,7 +79,7 @@ Before start to create AKS cluster. Please input credential for operate on Azure
   ```sh
   "AKS Cluster Name"
   ```
-<br><img src="img/aks.jpg" alt="githubaction" width="350" height="400">
+<br><img src="img/aks.jpg" alt="githubaction" width="500" height="600">
 
 
 ### Deployment Step-by-Step
