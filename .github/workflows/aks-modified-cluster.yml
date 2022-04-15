@@ -63,7 +63,7 @@ jobs:
       run: terraform plan -no-color -out=tfplan -input=false
       continue-on-error: true
 
-    - name: AKS create cluster
+    - name: AKS update cluster configuration
       id: apply
       run: terraform apply -input=false tfplan
       continue-on-error: true
