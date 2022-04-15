@@ -15,7 +15,7 @@ log_analytics_workspace_name = "aksfarm1-wrkspc"
 #--------------------------------------Basic AKS properties-------------------------------------
 environment = "Development" #Environment Development, UAT, Production
 
-cluster_version = "1.21.9"
+cluster_version = "1.22.4"
 
 cluster_public = true
 

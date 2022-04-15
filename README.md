@@ -125,6 +125,11 @@ Before start to create AKS cluster. Please input credential for operate on Azure
 9. Check progress on tab "action" until it finished. (Optional: Verify result on web console/cli for double check)<br><img src="img/aks2.jpg" alt="githubaction" width="800" height="400">
 
 10. Download kubeconfig from file "aks-config" and check application demo on browser <br><img src="img/aks3.jpg" alt="githubaction" width="800" height="500">
+   ```sh
+   git pull
+   kubectl get nodes --kubeconfig=./azure-aks/aks-config
+   kubectl get ing -n=management-ui --kubeconfig=./azure-aks/aks-config
+   ```
 
 ### Modified Kubernetes Configuation
 
@@ -146,6 +151,11 @@ Before start to create AKS cluster. Please input credential for operate on Azure
    ```
 3. Check progress on tab "action" until it finished. (Optional: Verify result on web console/cli for double check)<br><img src="img/aks4.jpg" alt="githubaction" width="800" height="500">
 4. Check modify result <br><img src="img/aks5.jpg" alt="githubaction" width="800" height="500">
+5. Use "aks-config" and check modify result via command line
+   ```sh
+   git pull
+   kubectl get nodes --kubeconfig=./azure-aks/aks-config
+   ```
 
 ### Destroy Step-by-Step
 *Remark: When you had been destroy cluster. All properties on "./azure-aks/terraform.tfvars" will roll back to default
