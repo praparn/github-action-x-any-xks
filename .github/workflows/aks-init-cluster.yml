@@ -77,7 +77,8 @@ jobs:
       id: export
       run: |
         awk 'NR>=2 && NR<=21' ./aks-config > ./aks-config.tmp
-        mv ./aks-config.tmp > ./aks-config
+        mv ./aks-config.tmp ./aks-config
+        cat ./aks-config
         echo "current path:" && pwd
         echo "ls -lh:" && ls -lh
         echo "kubeconfig:" && cat aks-config
