@@ -1,4 +1,4 @@
-name: 'AKS modified cluster'
+name: 'AKS destroy cluster'
 on:
   push:
     tags:
@@ -8,7 +8,7 @@ on:
       - 'aks-cluster-destroy*'
 
 jobs:
-  modify-cluster:
+  destroy-cluster:
     runs-on: ubuntu-latest
     env:
         working-directory: ./azure-aks/
@@ -28,7 +28,7 @@ jobs:
       # Checkout code
     - uses: actions/checkout@master
       name: Git checkout code
-      
+
       # Seed file for system configuration
     - name: Setup system configruation
       run: | 
@@ -45,7 +45,20 @@ jobs:
       with:
         terraform_version: 1.1.8
 
-    - name: AKS destroy farm=
+    - name: AKS readiness verify
+      id: fmt
+      run: terraform fmt -check
+      continue-on-error: true
+    
+    - name: AKS initialize
+      id: init
+      run: terraform init -input=false
+
+    - name: AKS validation configuration step1
+      id: validate
+      run: terraform validate -no-color
+      
+    - name: AKS destroy farm
       id: destroy
       run: terraform destroy --auto-approve
       continue-on-error: true
