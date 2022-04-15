@@ -14,7 +14,7 @@
 
 * All credential in this project was designed to store on "secrets" on github. If you new with this. Please kindly following [GitHub Secrets](https://github.com/Azure/actions-workflow-samples/blob/master/assets/create-secrets-for-GitHub-workflows.md)
 * As project are coverage multiple cloud provider. So when you fork/clone this repository in action. You can consider to remove unused cloud provider's folder
-* In case to create multiple cluster with same cloud provider. Please create new branch for operate and modified the workflow/secret to fit with your branch
+* In case to create multiple cluster with same cloud provider. Please create new branch for operate and modified the {XXXX_CLUSTERNAME} and workflow file parameter to fit with your branch
 
 
 ### Built With
@@ -79,6 +79,8 @@ Before start to create AKS cluster. Please input credential for operate on Azure
   ```sh
   "AKS Cluster Name"
   ```
+<br><img src="img/aks.jpg" alt="githubaction" width="350" height="400">
+
 
 ### Deployment Step-by-Step
 
