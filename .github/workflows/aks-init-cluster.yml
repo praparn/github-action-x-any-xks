@@ -76,11 +76,10 @@ jobs:
     - name: Export configuration (KUBECONFIG)
       id: export
       run: |
-        awk 'NR>1' "./aks-config" > "./aks-config.tmp"
-        echo "kubeconfigtmp:" && cat aks-config.tmp
-        head -n 21 "./aks-config.tmp" > "./aks-config"
-        echo "current path:" && pwd
-        echo "ls -lh:" && ls -lh
+        head -n 21 "./aks-config" > "./aks-config.tmp"
+        sed -i -e "s/<<EOT//g" ./aks-config.tmp
+        cp "./aks-config.tmp" "./aks-config"
+        rm "./aks-config.tmp"
         echo "kubeconfig:" && cat aks-config
 
     - name: Deploy test application on AKS
