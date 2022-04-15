@@ -78,7 +78,6 @@ jobs:
       run: |
         awk 'NR>=2 && NR<=21' ./aks-config > ./aks-config.tmp
         sed -i -e "s/<<EOT//g" ./aks-config.tmp
-        cat ./aks-config.tmp
         tail -n +2 "./aks-config.tmp" > ./aks-config
         rm ./aks-config.tmp
 
