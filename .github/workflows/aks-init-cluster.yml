@@ -76,7 +76,8 @@ jobs:
     - name: Export configuration (KUBECONFIG)
       id: export
       run: | 
-        tail -n +2 "./aks-config" > "./aks-config.tmp" && head -n 21 "./aks-config.tmp" > "./aks-config" && rm "./aks-config.tmp"
+        cd ${{env.working-directory}}
+        tail -n +2 "aks-config" > "aks-config.tmp" && head -n 21 "aks-config.tmp" > "aks-config" && rm "aks-config.tmp"
 
     - name: Deploy test application on AKS
       id: deploy
@@ -84,7 +85,8 @@ jobs:
       with:
         kubectl: 1.23.2
         command: |
-          export KUBECONFIG=./aks-config
+          cd ${{env.working-directory}}
+          export KUBECONFIG=aks-config
           kubectl get nodes
           kubectl apply -f ./demo/backend.yaml
           kubectl apply -f ./demo/frontend.yaml
