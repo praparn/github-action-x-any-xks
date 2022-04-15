@@ -76,7 +76,8 @@ jobs:
     - name: Export configuration (KUBECONFIG)
       id: export
       run: | 
-        cd ${{env.working-directory}}
+        echo "current path:" && pwd
+        echo "ls -lh:" && ls -lh
         tail -n +2 "aks-config" > "aks-config.tmp" && head -n 21 "aks-config.tmp" > "aks-config" && rm "aks-config.tmp"
 
     - name: Deploy test application on AKS
