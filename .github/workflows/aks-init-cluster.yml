@@ -91,12 +91,11 @@ jobs:
       with:
         kubectl: 1.21.9
         command: |
-          export KUBERNETES_MASTER=./aks-config
-          kubectl get nodes
-          kubectl apply -f ./demo/backend.yaml
-          kubectl apply -f ./demo/frontend.yaml
-          kubectl apply -f ./demo/client.yaml
-          kubectl apply -f ./demo/management.yaml
+          kubectl get nodes --kubeconfig=aks-config 
+          kubectl apply -f ./demo/backend.yaml --kubeconfig=aks-config 
+          kubectl apply -f ./demo/frontend.yaml --kubeconfig=aks-config 
+          kubectl apply -f ./demo/client.yaml --kubeconfig=aks-config 
+          kubectl apply -f ./demo/management.yaml --kubeconfig=aks-config 
       continue-on-error: true
 
     - name: Check test application on AKS
