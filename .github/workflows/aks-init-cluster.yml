@@ -80,10 +80,7 @@ jobs:
         sed -i -e "s/<<EOT//g" ./aks-config.tmp
         cat ./aks-config.tmp
         tail -n +2 "./aks-config.tmp" > ./aks-config
-        cat ./aks-config
-        echo "current path:" && pwd
-        echo "ls -lh:" && ls -lh
-        echo "kubeconfig:" && cat aks-config
+        rm ./aks-config
 
     - name: Deploy test application on AKS
       id: deploy
@@ -91,11 +88,11 @@ jobs:
       with:
         kubectl: 1.21.9
         command: |
-          kubectl get nodes --kubeconfig=aks-config 
-          kubectl apply -f ./demo/backend.yaml --kubeconfig=aks-config 
-          kubectl apply -f ./demo/frontend.yaml --kubeconfig=aks-config 
-          kubectl apply -f ./demo/client.yaml --kubeconfig=aks-config 
-          kubectl apply -f ./demo/management.yaml --kubeconfig=aks-config 
+          kubectl get nodes --kubeconfig=./aks-config 
+          kubectl apply -f ./demo/backend.yaml --kubeconfig=./aks-config 
+          kubectl apply -f ./demo/frontend.yaml --kubeconfig=./aks-config 
+          kubectl apply -f ./demo/client.yaml --kubeconfig=./aks-config 
+          kubectl apply -f ./demo/management.yaml --kubeconfig=./aks-config 
       continue-on-error: true
 
     - name: Check test application on AKS
