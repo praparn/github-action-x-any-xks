@@ -57,7 +57,7 @@ jobs:
     - name: AKS validation configuration step1
       id: validate
       run: terraform validate -no-color
-      
+
     - name: AKS destroy farm
       id: destroy
       run: terraform destroy --auto-approve
@@ -66,7 +66,7 @@ jobs:
     - name: Rollback all Propertie KUBECONFIG
       run: | 
         # Cleanup KUBECONFIG
-        touch > aks-config
+        echo " " > aks-config
         cp 00_provider-template.tftemplate 00_provider.tf
         cp terraform-template.tfvarstemplate terraform.tfvars
 

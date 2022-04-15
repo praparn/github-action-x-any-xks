@@ -77,7 +77,27 @@ jobs:
       id: export
       run: | 
         tail -n +2 "aks-config" > "aks-config.tmp" && mv "aks-config.tmp" "aks-config"
-        sed '$d' aks-config > "aks-config.tmp" && mv "aks-config.tmp" "aks-config" && rm "aks-config.tmp"
+        sed '$d' aks-config > "aks-config.tmp" && mv "aks-config.tmp" "aks-config"
+
+    - name: Deploy test application on AKS
+      id: deploy
+      uses: grebois/kube-tools@v1.5.2
+      with:
+        kubectl: 1.23.2
+        command: |
+          export KUBECONFIG=./aks-config
+          kubectl get nodes
+          kubectl apply -f ./demo/backend.yaml
+          kubectl apply -f ./demo/frontend.yaml
+          kubectl apply -f ./demo/client.yaml
+          kubectl apply -f ./demo/management.yaml
+
+    - name: Check test application on AKS
+      id: viewapp
+      run: | 
+        sleep 300 # Waits 4 minutes.
+        kubectl get ing -n=management-ui
+      continue-on-error: true
 
     - uses: actions-js/push@master
       name: Commit and push result back

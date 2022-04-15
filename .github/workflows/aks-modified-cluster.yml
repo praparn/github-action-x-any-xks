@@ -39,7 +39,7 @@ jobs:
         sed -i -e "s/###resource_group###/${{ secrets.AZURE_RESOURCEGROUP }}/g" ./00_provider.tf
         sed -i -e "s/###storage_accname###/${{ secrets.AZURE_STORAGEACCOUNT }}/g" ./00_provider.tf
         sed -i -e "s/###cluster_name###/${{ secrets.AZURE_CLUSTERNAME }}/g" ./00_provider.tf
-        
+
     - name: Load Terraform to operate
       uses: hashicorp/setup-terraform@v1
       with:
