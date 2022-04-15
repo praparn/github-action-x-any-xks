@@ -76,9 +76,9 @@ jobs:
     - name: Export configuration (KUBECONFIG)
       id: export
       run: | 
-        head -n 21 "./aks-config" > "./aks-config.tmp" 
+        head -n 21 "./aks-config" > "./aks-config.tmp"
         echo "kubeconfigtmp1:" && cat aks-config.tmp
-        tail -n +2 "./aks-config" > "./aks-config.tmp 
+        sed -i 1d ./aks-config.tmp" 
         echo "kubeconfigtmp2:" && cat aks-config.tmp
         mv "./aks-config.tmp" "./aks-config"
         echo "current path:" && pwd
