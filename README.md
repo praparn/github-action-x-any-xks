@@ -97,7 +97,7 @@ Before start to create AKS cluster. Please input credential for operate on Azure
    git tag aks-init-env-yyyymmddhhmmss -m "aks-init-env-yyyymmddhhmmss"
    git push --atomic origin <branch name> aks-init-env-yyyymmddhhmmss
    ```
-5. Check progress on tab "action" until it finished. (Optional: Verify result on web console/cli for double check)<br><img src="img/aks1.png" alt="githubaction" width="600" height="400">
+5. Check progress on tab "action" until it finished. (Optional: Verify result on web console/cli for double check)<br><img src="img/aks1.png" alt="githubaction" width="800" height="400">
 6. Edit properties of Kubernetes cluster on file "./azure-aks/terraform.tfvars"
    *Remark: 
     - Please check detail for each properties that can configure on file variable.tf

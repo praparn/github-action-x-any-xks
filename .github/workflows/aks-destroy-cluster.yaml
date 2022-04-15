@@ -39,8 +39,8 @@ jobs:
       run: | 
         # Cleanup KUBECONFIG
         touch > aks-config
-        cp 00_provider-template.tf 00_provider.tf
-        cp terraform-template.tfvars terraform.tfvars
+        cp 00_provider-template.tftemplate 00_provider.tf
+        cp terraform-template.tfvarstemplate terraform.tfvars
 
     - uses: actions-js/push@master
       name: Commit and push result back
