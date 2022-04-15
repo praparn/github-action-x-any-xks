@@ -36,53 +36,41 @@ jobs:
         sed -i -e "s/###storage_accname###/${{ secrets.AZURE_STORAGEACCOUNT }}/g" ./00_provider.tf
         sed -i -e "s/###cluster_name###/${{ secrets.AZURE_CLUSTERNAME }}/g" ./00_provider.tf
 
-    - name: AKS readiness verify
+    - name: Load Terraform to operate
       uses: hashicorp/setup-terraform@v1
       with:
         terraform_version: 1.1.8
+
+    - name: AKS readiness verify
       id: fmt
       run: terraform fmt -check
       continue-on-error: true
     
     - name: AKS initialize
-      uses: hashicorp/setup-terraform@v1
-      with:
-        terraform_version: 1.1.8
       id: init
       run: terraform init -input=false
 
     - name: AKS validation configuration step1
-      uses: hashicorp/setup-terraform@v1
-      with:
-        terraform_version: 1.1.8
       id: validate
       run: terraform validate -no-color
 
     - name: AKS validation configuration step2
-      uses: hashicorp/setup-terraform@v1
-      with:
-        terraform_version: 1.1.8
       id: plan
       run: terraform plan -no-color -out=tfplan -input=false
       continue-on-error: true
 
     - name: AKS create cluster
-      uses: hashicorp/setup-terraform@v1
-      with:
-        terraform_version: 1.1.8
-      id: plan
+      id: apply
       run: terraform apply -input=false tfplan
       continue-on-error: true
 
     - name: AKS export output
-      uses: hashicorp/setup-terraform@v1
-      with:
-        terraform_version: 1.1.8
       id: output
       run: terraform output kube_config > aks-config
       continue-on-error: true
 
     - name: Export configuration (KUBECONFIG)
+      id: export
       run: | 
         tail -n +2 "aks-config" > "aks-config.tmp" && mv "aks-config.tmp" "aks-config"
         sed '$d' aks-config > "aks-config.tmp" && mv "aks-config.tmp" "aks-config" && rm "aks-config.tmp"

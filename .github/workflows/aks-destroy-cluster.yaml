@@ -25,10 +25,12 @@ jobs:
     - uses: actions/checkout@master
       name: Git checkout code
 
-    - name: AKS readiness verify
+    - name: Load Terraform to operate
       uses: hashicorp/setup-terraform@v1
       with:
         terraform_version: 1.1.8
+
+    - name: AKS destroy farm=
       id: destroy
       run: terraform destroy --auto-approve
       continue-on-error: true
