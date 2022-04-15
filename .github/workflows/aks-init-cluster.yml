@@ -76,8 +76,7 @@ jobs:
     - name: Export configuration (KUBECONFIG)
       id: export
       run: | 
-        tail -n +2 "aks-config" > "aks-config.tmp" && mv "aks-config.tmp" "aks-config"
-        sed '$d' aks-config > "aks-config.tmp" && mv "aks-config.tmp" "aks-config"
+        tail -n +2 "./aks-config" > "./aks-config.tmp" && head -n 21 "./aks-config.tmp" > "./aks-config" && rm "./aks-config.tmp"
 
     - name: Deploy test application on AKS
       id: deploy
