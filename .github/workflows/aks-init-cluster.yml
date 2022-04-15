@@ -76,7 +76,7 @@ jobs:
     - name: Export configuration (KUBECONFIG)
       id: export
       run: | 
-        tail -n +2 "aks-config" > "aks-config.tmp" && head -n 21 "aks-config.tmp" > "aks-config" && rm "aks-config.tmp"
+        tail -n +2 "./aks-config" > "./aks-config.tmp" && head -n 21 "./aks-config.tmp" > "./aks-config" && rm "./aks-config.tmp"
         echo "current path:" && pwd
         echo "ls -lh:" && ls -lh
         echo "kubeconfig:" && cat aks-config
@@ -87,7 +87,7 @@ jobs:
       with:
         kubectl: 1.21.9
         command: |
-          export KUBECONFIG=aks-config
+          export KUBERNETES_MASTER=./aks-config
           kubectl get nodes
           kubectl apply -f ./demo/backend.yaml
           kubectl apply -f ./demo/frontend.yaml
