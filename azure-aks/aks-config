@@ -1,5 +1,4 @@
-[command]/home/runner/work/_temp/9c496ff8-3ef1-492c-8087-7261302a7add/terraform-bin output kube_config
-
+<<EOT
 apiVersion: v1
 clusters:
 - cluster:
