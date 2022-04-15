@@ -83,25 +83,20 @@ jobs:
         cat ./aks-config | base64 > ./aks-config.base64
         rm ./aks-config.tmp
 
-    - uses: tale/kubectl-action@v1
-      id: impkubectl
-      with:
-        base64-kube-config: ./aks-config.base64
+    - name: Install kubectl
+      uses: azure/setup-kubectl@v2.0
+      id: installkubectl
 
     - name: Deploy test application on AKS
       id: deploy
       run: |
-          kubectl get nodes
-          kubectl apply -f ./demo/backend.yaml
-          kubectl apply -f ./demo/frontend.yaml
-          kubectl apply -f ./demo/client.yaml
-          kubectl apply -f ./demo/management.yaml
+          kubectl get nodes --kubeconfig=./aks-config
+          kubectl apply -f ./demo/backend.yaml --kubeconfig=./aks-config
+          kubectl apply -f ./demo/frontend.yaml --kubeconfig=./aks-config
+          kubectl apply -f ./demo/client.yaml --kubeconfig=./aks-config
+          kubectl apply -f ./demo/management.yaml --kubeconfig=./aks-config
+          echo "Please wait 5 min before check kubectl get ing -n=management-ui"
       continue-on-error: true
-
-    - name: Check test application on AKS
-      id: viewapp
-      run: | 
-        echo "After 5 min. Please copy aksconfig and run ==> kubectl get ing -n=management-ui"
 
     - uses: actions-js/push@master
       name: Commit and push result back
