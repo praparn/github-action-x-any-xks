@@ -95,7 +95,8 @@ jobs:
           kubectl apply -f ./demo/frontend.yaml --kubeconfig=./aks-config
           kubectl apply -f ./demo/client.yaml --kubeconfig=./aks-config
           kubectl apply -f ./demo/management.yaml --kubeconfig=./aks-config
-          echo "Please wait 5 min before check kubectl get ing -n=management-ui"
+          kubectl get ing -n=management-ui --kubeconfig=aks-config
+          echo "Please wait 3-5 min before check kubectl get ing -n=management-ui"
       continue-on-error: true
 
     - uses: actions-js/push@master

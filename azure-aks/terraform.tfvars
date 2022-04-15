@@ -23,7 +23,7 @@ worker_size = "Standard_B2s"
 
 worker_disksize = 30
 
-worker_count = 1
+worker_count = 3
 
 worker_maxpods = 30
 
