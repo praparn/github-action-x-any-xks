@@ -82,9 +82,9 @@ jobs:
         tail -n +2 "./aks-config.tmp" > ./aks-config
         cat ./aks-config | base64 > ./aks-config.base64
         rm ./aks-config.tmp
-        
+
     - uses: tale/kubectl-action@v1
-      id: import kubectl
+      id: impkubectl
       with:
         base64-kube-config: ./aks-config.base64
 
