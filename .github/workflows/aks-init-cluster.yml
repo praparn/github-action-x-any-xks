@@ -80,19 +80,22 @@ jobs:
         sed -i -e "s/<<EOT//g" ./aks-config.tmp
         cat ./aks-config.tmp
         tail -n +2 "./aks-config.tmp" > ./aks-config
-        rm ./aks-config
+        cat ./aks-config | base64 > ./aks-config.base64
+        rm ./aks-config.tmp
+        
+    - uses: tale/kubectl-action@v1
+      id: import kubectl
+      with:
+        base64-kube-config: ./aks-config.base64
 
     - name: Deploy test application on AKS
       id: deploy
-      uses: grebois/kube-tools@v1.5.2
-      with:
-        kubectl: 1.21.9
-        command: |
-          kubectl get nodes --kubeconfig=./aks-config 
-          kubectl apply -f ./demo/backend.yaml --kubeconfig=./aks-config 
-          kubectl apply -f ./demo/frontend.yaml --kubeconfig=./aks-config 
-          kubectl apply -f ./demo/client.yaml --kubeconfig=./aks-config 
-          kubectl apply -f ./demo/management.yaml --kubeconfig=./aks-config 
+      run: |
+          kubectl get nodes
+          kubectl apply -f ./demo/backend.yaml
+          kubectl apply -f ./demo/frontend.yaml
+          kubectl apply -f ./demo/client.yaml
+          kubectl apply -f ./demo/management.yaml
       continue-on-error: true
 
     - name: Check test application on AKS
