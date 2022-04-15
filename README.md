@@ -1,16 +1,4 @@
-<div id="top"></div>
 
-
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
-
-<br />
 <div align="center">
   <a href="https://github.com/praparn/github-action-x-any-xks">
     <img src="img/logo.png" alt="Logo" width="600" height="200">
@@ -118,7 +106,7 @@ Before start to create AKS cluster. Please input credential for operate on Azure
     - Advance configure is avaliable on "#----------Advance AKS properties"
 7. Create AKS cluster by commit and tag "aks-init-cluster*"
    ```sh
-      git pull
+   git pull
    git tag #check tag duplicate
    echo "aks-cluster-create-yyyymmddhhmmss" > ./azure-aks/result/result-aks-init
    git add -A
@@ -153,6 +141,7 @@ Before start to create AKS cluster. Please input credential for operate on Azure
 4. Download kubeconfig from file "aks-config"
 
 ### Destroy Step-by-Step
+*Remark: When you had been destroy cluster. All properties on "./azure-aks/terraform.tfvars" will roll back to default
 
 1. Delete the cluster by commit and tag "aks-cluster-destroy*"
    ```sh
@@ -167,6 +156,8 @@ Before start to create AKS cluster. Please input credential for operate on Azure
 2. Check progress on tab "action" until it finished. (Optional: Verify result on web console/cli for double check)
 3. Destroy Azure environment by commit and tag "aks-init-destroy*"
    ```sh
+   git pull
+   git tag #check tag duplicate
    echo "aks-destroy-env-yyyymmddhhmmss" > ./azure-aks/result/result-env-destroy
    git add -A
    git commit -m "Any commend that you need"

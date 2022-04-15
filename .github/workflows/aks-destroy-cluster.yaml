@@ -33,10 +33,12 @@ jobs:
       run: terraform destroy --auto-approve
       continue-on-error: true
 
-    - name: Cleanup KUBECONFIG
+    - name: Rollback all Propertie KUBECONFIG
       run: | 
         # Cleanup KUBECONFIG
         touch > aks-config
+        cp 00_provider-template.tf 00_provider.tf
+        cp terraform-template.tfvars terraform.tfvars
 
     - uses: actions-js/push@master
       name: Commit and push result back
