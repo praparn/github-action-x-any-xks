@@ -41,11 +41,11 @@ cluster_rbac = true
 
 cluster_httprouting = false
 
-cluster_autoscale = true
+cluster_autoscale = false
 
-cluster_autoscale_max = 3
+cluster_autoscale_max = null
 
-cluster_autoscale_min = 1
+cluster_autoscale_min = null
 
 worker_os = "Ubuntu"
 
