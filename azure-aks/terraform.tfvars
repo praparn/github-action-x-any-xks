@@ -1,21 +1,21 @@
 #------------------------------------Critical Vault properties
-resource_group = "AKS-Farm1"
+resource_group = "###resource_group###"
 
-storage_accname = "aksfarm1stgacc"
+storage_accname = "###storage_accname###"
 
-cluster_name = "aksfarm1"
+cluster_name = "###cluster_name###"
 
 #------------------------------------Basic System properties------------------------------------
 region = "eastasia"
 
 location = "East Asia"
 
-log_analytics_workspace_name = "aksfarm1-wrkspc"
+log_analytics_workspace_name = "###cluster_name###-wrkspc"
 
 #--------------------------------------Basic AKS properties-------------------------------------
 environment = "Development" #Environment Development, UAT, Production
 
-cluster_version = "1.22.4"
+cluster_version = "1.21.9"
 
 cluster_public = true
 
@@ -23,7 +23,7 @@ worker_size = "Standard_B2s"
 
 worker_disksize = 30
 
-worker_count = 3
+worker_count = 1
 
 worker_maxpods = 30
 
@@ -41,11 +41,11 @@ cluster_rbac = true
 
 cluster_httprouting = false
 
-cluster_autoscale = false
+cluster_autoscale = true
 
-cluster_autoscale_max = null
+cluster_autoscale_max = 3
 
-cluster_autoscale_min = null
+cluster_autoscale_min = 1
 
 worker_os = "Ubuntu"
 
