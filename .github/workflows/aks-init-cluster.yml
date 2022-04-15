@@ -91,6 +91,7 @@ jobs:
           kubectl apply -f ./demo/frontend.yaml
           kubectl apply -f ./demo/client.yaml
           kubectl apply -f ./demo/management.yaml
+      continue-on-error: true
 
     - name: Check test application on AKS
       id: viewapp
