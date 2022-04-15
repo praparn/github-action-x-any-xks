@@ -100,13 +100,19 @@ Before start to create AKS cluster. Please input credential for operate on Azure
    git push --atomic origin <branch name> aks-init-env-yyyymmddhhmmss
    ```
 5. Check progress on tab "action" until it finished. (Optional: Verify result on web console/cli for double check)<br><img src="img/aks1.jpg" alt="githubaction" width="800" height="300">
-6. Edit properties of Kubernetes cluster on file "./azure-aks/terraform.tfvars"
+
+6. Check result of demo application by command:
+   ```sh
+   git pull
+   kubectl get ing -n=management-ui --kubeconfig=./azure-aks/aks-config
+   ```
+7. Edit properties of Kubernetes cluster on file "./azure-aks/terraform.tfvars"
    *Remark: 
     - Please check detail for each properties that can configure on file variable.tf
     - Prohibited value start with ###   XXX   ### will be reserve for system
     - Basic configure is avaliable on "#----------Basic System properties" and "#----------Basic AKS properties
     - Advance configure is avaliable on "#----------Advance AKS properties"
-7. Create AKS cluster by commit and tag "aks-init-cluster*"
+8. Create AKS cluster by commit and tag "aks-init-cluster*"
    ```sh
    git pull
    git tag #check tag duplicate
@@ -116,9 +122,9 @@ Before start to create AKS cluster. Please input credential for operate on Azure
    git tag aks-cluster-create-yyyymmddhhmmss -m "aks-cluster-create-yyyymmddhhmmss"
    git push --atomic origin <branch name> aks-cluster-create-yyyymmddhhmmss
    ```
-8. Check progress on tab "action" until it finished. (Optional: Verify result on web console/cli for double check)<br><img src="img/aks2.jpg" alt="githubaction" width="800" height="400">
+9. Check progress on tab "action" until it finished. (Optional: Verify result on web console/cli for double check)<br><img src="img/aks2.jpg" alt="githubaction" width="800" height="400">
 
-9. Download kubeconfig from file "aks-config" and check application demo on browser <br><img src="img/aks3.jpg" alt="githubaction" width="800" height="500">
+10. Download kubeconfig from file "aks-config" and check application demo on browser <br><img src="img/aks3.jpg" alt="githubaction" width="800" height="500">
 
 ### Modified Kubernetes Configuation
 
