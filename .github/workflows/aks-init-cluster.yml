@@ -77,8 +77,9 @@ jobs:
       id: export
       run: |
         awk 'NR>=2 && NR<=21' ./aks-config > ./aks-config.tmp
-        mv ./aks-config.tmp ./aks-config
-        sed -i -e "s/<<EOT//g" ./aks-config
+        sed -i -e "s/<<EOT//g" ./aks-config.tmp
+        cat ./aks-config.tmp
+        tail -n +2 "./aks-config.tmp" > ./aks-config
         cat ./aks-config
         echo "current path:" && pwd
         echo "ls -lh:" && ls -lh
