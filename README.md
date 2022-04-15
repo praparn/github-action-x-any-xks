@@ -143,7 +143,7 @@ Before start to create AKS cluster. Please input credential for operate on Azure
    ```sh
    git pull
    git tag #check tag duplicate
-   echo "aks-cluster-modify-yyyymmddhhmmss" > ./azure-aks/result/result-env-init
+   echo "aks-cluster-modify-yyyymmddhhmmss" > ./azure-aks/result/result-aks-modify
    git add -A
    git commit -m "Any commend that you need"
    git tag aks-cluster-modify-yyyymmddhhmmss -m "aks-cluster-modify*-yyyymmddhhmmss"
@@ -164,7 +164,7 @@ Before start to create AKS cluster. Please input credential for operate on Azure
    ```sh
    git pull
    git tag #check tag duplicate
-   echo "aks-cluster-destroy-yyyymmddhhmmss" > ./azure-aks/result/result-env-init
+   echo "aks-cluster-destroy-yyyymmddhhmmss" > ./azure-aks/result/result-aks-destroy
    git add -A
    git commit -m "Any commend that you need"
    git tag aks-cluster-destroy-yyyymmddhhmmss -m "aks-cluster-destroy*-yyyymmddhhmmss"
