@@ -170,7 +170,7 @@ Before start to create AKS cluster. Please input credential for operate on Azure
    git push --atomic origin <branch name> aks-cluster-destroy-yyyymmddhhmmss
    ```
 2. Check progress on tab "action" until it finished. (Optional: Verify result on web console/cli for double check)<br><img src="img/aks6.jpg" alt="githubaction" width="800" height="500">
-3. Destroy Azure environment by commit and tag "aks-init-destroy*"
+3. Destroy Azure environment by commit and tag "aks-destroy-env*"
    ```sh
    git pull
    git tag #check tag duplicate
