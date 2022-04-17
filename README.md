@@ -14,7 +14,7 @@
 
 * All credential in this project was designed to store on "secrets" on github. If you new with this. Please kindly following [GitHub Secrets](https://github.com/Azure/actions-workflow-samples/blob/master/assets/create-secrets-for-GitHub-workflows.md)
 * As project are coverage multiple cloud provider. So when you fork/clone this repository in action. You can consider to remove unused cloud provider's folder
-* In case to create multiple cluster with same cloud provider. Please create new branch for operate and modified the {XXXX_CLUSTERNAME} and workflow file parameter to fit with your branch
+* In case to create multiple cluster with same cloud provider. Please create new branch for operate , Create new secret of the {XXXX_CLUSTERNAME} and workflow file parameter to fit with your branch
 
 
 ### Built With
@@ -31,6 +31,12 @@
 ## Azure AKS Cluster
 
 Cloud provider's folder: aws-eks
+* [Video: Setup new repository and Create Azure environment](https://youtu.be/6SAnuoYef6I)
+* [Video: Create AKS cluster](https://youtu.be/d3a2iJUyaZo)
+* [Video: Modify AKS cluster (Upgrade Version)](https://youtu.be/CSrSdmojmNE)
+* [Video: Modify AKS cluster (Change Worker)](https://youtu.be/pcmK0Eh2KNk)
+* [Video: Destroy AKS cluster](https://youtu.be/gcsV_6S5Bxk)
+* [Video: Destroy Azure environment](https://youtu.be/9IKcZAko690)
 
 *Remark: For use this github action on Azure Portal. Please enable the preview feature 'microsoft.ContainerService/CustomNodeConfigPreview' by follow this KB [Azure Enable Feature](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/preview-features?tabs=azure-portal)
 
