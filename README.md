@@ -31,7 +31,7 @@
 ## Azure AKS Cluster
 
 Cloud provider's folder: aws-eks
-* [Video: Setup new repository and Create Azure environment](https://youtu.be/6SAnuoYef6I)
+* [Video: Setup new repository and Create Azure environment](https://youtu.be/ZMdB07CQ790)
 * [Video: Create AKS cluster](https://youtu.be/d3a2iJUyaZo)
 * [Video: Modify AKS cluster (Upgrade Version)](https://youtu.be/CSrSdmojmNE)
 * [Video: Modify AKS cluster (Change Worker)](https://youtu.be/pcmK0Eh2KNk)
