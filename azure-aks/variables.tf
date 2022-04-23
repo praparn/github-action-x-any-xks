@@ -67,10 +67,7 @@ variable cluster_public {
   description = "AKS cluster enable access from public or not (true/false)"
 }
 
-variable cluster_rbac {
-  default = true
-  description = "AKS cluster enable RBAC on Active Directory (true/false)"
-}
+
 variable default_node_pool {
   default = "aksnodepool"
   description = "AKS node pool name (Avoid '-')"
