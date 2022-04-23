@@ -62,11 +62,6 @@ variable network_space_aksapp {
 #      AKS Properties         #
 ###############################
 
-variable cluster_admanage {
-  default = true
-  description = "AKS cluster enable Active Directory Manage (true/false)"
-}
-
 variable cluster_public {
   default = true
   description = "AKS cluster enable access from public or not (true/false)"
