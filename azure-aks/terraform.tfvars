@@ -35,8 +35,6 @@ network_space_aksapp = "10.255.16.0/20"
 
 #------------------------------------Advance AKS properties------------------------------------
 
-cluster_rbac = true
-
 cluster_httprouting = false
 
 cluster_autoscale = false
